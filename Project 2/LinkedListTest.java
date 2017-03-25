@@ -114,6 +114,7 @@ public class LinkedListTest {
         addMany();
         for(int i = 0; i < control.size(); i++)
         {
+        	//System.out.println("control : " + control.get(i) + "   target: " + target.get(i));
             Assert.assertEquals(control.get(i), target.get(i));
         }
     }
