@@ -132,8 +132,32 @@ public class MergeSorterTest
 
     List<Integer>controlList = Arrays.asList(2, 3, 9, 9, 8, 5, 5, 2, 1, 3);
     assertListsEqual(testList, controlList);
+    System.out.println(testList);
     Assert.assertEquals(16, steps);
   }
 
+  @Test
+  public void testInternalCall3()
+  {
+    List<Integer>testList = Arrays.asList(2, 3, 5, 9, 5, 8, 9, 2, 1, 3);
+    int steps = sorter.mergeSortRecursive(testList, 0, 8, new ReverseComparator<Integer>());
+
+    List<Integer>controlList = Arrays.asList(9, 9, 8, 5, 5, 3, 2, 2, 1, 3);
+    assertListsEqual(testList, controlList);
+    System.out.println(testList);
+    Assert.assertEquals(32, steps);
+  }
+  
+  @Test
+  public void testInternalCall4()
+  {
+    List<Integer>testList = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    int steps = sorter.mergeSortRecursive(testList, 4, 8, new ReverseComparator<Integer>());
+
+    List<Integer>controlList = Arrays.asList(1, 2, 3, 4, 9, 8, 7, 6, 5, 10);
+    assertListsEqual(testList, controlList);
+    System.out.println(testList);
+    Assert.assertEquals(8, steps);
+  }
 
 }
