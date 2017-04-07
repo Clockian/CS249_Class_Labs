@@ -34,66 +34,49 @@ public class MergeSorter implements IMergeSorter{
 
 	@Override
 	public <T> int mergeSortRecursive(List<T> list, int low, int high, Comparator<T> comparator) {
-		
 		int counter = 0;
 		
-		if(low >= high && (high - low) <= 1){
-			return counter;
-		}
-		
-		//if(low <= high && (high - low) >= 1){
-		else{
-			int mid = (high + low) / 2;
-			System.out.println("  " + counter);
-			counter += mergeSortRecursive(list, low, mid, comparator);
-			System.out.println("  " + counter);
-			counter += mergeSortRecursive(list, mid+1, high, comparator);
-			System.out.println("  " + counter);
-			
-			return merge(list, low, mid, high, counter, comparator);
-			//System.out.println("  " + counter);
-			
-		}
-		//else{
+		//if(low >= high && (high - low) <= 1){
 		//	return counter;
 		//}
+		//else if(counter == 0 && (low - high) == 1){
+		//	return counter;
+		//}
+		if(low < high){
+			int mid = (high + low) / 2;
+			counter += mergeSortRecursive(list, low, mid, comparator);
+			counter += mergeSortRecursive(list, mid+1, high, comparator);
+			counter += (high - low);
+			merge(list, low, mid, high, comparator);
+		}
+		return counter;
+		
+
 	}
 	
-	private <T> int merge(List<T>list, int low, int mid, int high, int counter, Comparator<T> comparator){
+	private <T> void merge(List<T>list, int low, int mid, int high, Comparator<T> comparator){
 		ArrayList<T> sorted = new ArrayList<T>();
 		int left = low;
 		int right = mid + 1;
-		//System.out.println(list);
-		//counter--;
 		while(left <= mid && right <= high){
-			//if(list.get(left) <= list.get(right)){
-			counter++;
 			if(comparator.compare(list.get(left), list.get(right)) < 0){
 				sorted.add(list.get(left));
 				left++;
-				//counter++;
-				System.out.println(list + "  " + counter);
 			}
 			else{
 				sorted.add(list.get(right));
 				right++;
-				//counter++;
-				System.out.println(list + "  " + counter);
 			}
 		}
 
 		while(left <= mid){
 			sorted.add(list.get(left));
 			left++;
-			counter++;
-			System.out.println(list + "  " + counter);
 		}
 
 		while(right <= high){
 			sorted.add(list.get(right));
 			right++;
-			counter++;
-			System.out.println(list + "  " + counter);
 		}
 		
 		int i = 0;
@@ -103,6 +86,5 @@ public class MergeSorter implements IMergeSorter{
             list.set(j, sorted.get(i++));
             j++;
         }
-        return counter;
 	}
 }

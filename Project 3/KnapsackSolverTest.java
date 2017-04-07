@@ -140,6 +140,9 @@ public class KnapsackSolverTest
     };
     boolean[] solution = solver.knapsack(2.1,items);
     boolean[] control = {false, true};
+    for(boolean x : solution){
+    	System.out.println(x + ", ");
+    }
     assertKnapsacksEqual(solution, control, items);
   }
 
