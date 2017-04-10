@@ -36,7 +36,7 @@ public class KnapsackSolver implements IKnapsackSolver{
 		else{
 			// Recurse through the two possible outcomes, include the item or not
 			boolean[] prior1 = knapsackRecursive2(capacity, n + 1, items, prior);		
-			//prior[n] = true;  // Need this for code to mean anything, but it fails the testKnapsackInternal, so IDK
+			prior[n] = true;  // Need this for code to mean anything, but it fails the testKnapsackInternal, so IDK
 			boolean[] prior2 = knapsackRecursive2(capacity - items[n].getWeight(), n + 1, items, prior);
 			
 			// Decide with array is valued higher, then return it
