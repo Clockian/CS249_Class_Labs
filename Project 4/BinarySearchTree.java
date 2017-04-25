@@ -1,5 +1,3 @@
-import java.util.NoSuchElementException;
-
 /*
  * Created by Jasque Saydyk
  * Project 04 - Binary Search Trees
@@ -7,6 +5,8 @@ import java.util.NoSuchElementException;
  * 16 April 2017
  * Description - This class creates a Binary Search Tree
 */
+import java.util.NoSuchElementException;
+
 public class BinarySearchTree<K extends Comparable<K>, E> implements IBinarySearchTree<K, E>{
 
 	public Node<K, E> root;
@@ -142,10 +142,10 @@ public class BinarySearchTree<K extends Comparable<K>, E> implements IBinarySear
 	}
 	
 	/**
-	 * 
-	 * @param root
-	 * @param s
-	 * @return
+	 * Creates a StringBuilder of all of the elements in the BST in order from least to greatest using recursion
+	 * @param root - Node to begin at, normally root
+	 * @param s - StringBuilder to begin building Sting with
+	 * @return StringBuilder containing all the elements below root inOrder
 	 */
 	private StringBuilder inOrder(Node<K, E> root, StringBuilder s){
 		if(root.left != null){
@@ -174,9 +174,9 @@ public class BinarySearchTree<K extends Comparable<K>, E> implements IBinarySear
 	}
 	
 	/**
-	 * 
-	 * @param root
-	 * @return
+	 * Obtains the highest distance of the tree using recursion
+	 * @param root - Node to start at, normally root
+	 * @return int representing the highest level including 0, subtract by one to get true height
 	 */
 	private int getRecursiveHeight(Node<K, E> root){
 		// Terminates branch and sends it back up
@@ -216,9 +216,11 @@ public class BinarySearchTree<K extends Comparable<K>, E> implements IBinarySear
 	}
 	
 	/**
-	 * 
-	 * @param root
-	 * @param s
+	 * Builds a StringBuilder containing a description of the BST
+	 * @param root - Node to start recursion, normally start at root
+	 * @param s - StringBuilder used to build the String
+	 * @param curHeight - Tracks the current height of the tree the recursion is on
+	 * @param curTreeSide - Keeps track of the side the tree is on, TRUE for left, FALSE for right
 	 * @return
 	 */
 	public StringBuilder treeStringBuilder(Node<K, E> root, StringBuilder s, int curHeight, boolean curTreeSide){
