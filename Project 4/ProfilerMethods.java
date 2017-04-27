@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class MainTester {
+public class ProfilerMethods {
 	
 	
 	public void BSTrandTest10_000(BinarySearchTree<Integer, Integer> test){

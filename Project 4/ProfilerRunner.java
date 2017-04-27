@@ -1,6 +1,6 @@
-public class MainRunner {
+public class ProfilerRunner {
 	public static void main(String[] args){
-		MainTester test = new MainTester();
+		ProfilerMethods test = new ProfilerMethods();
 		
 		BinarySearchTree<Integer, Integer> tree1 = new BinarySearchTree<>();
 		BinarySearchTree<Integer, Integer> tree2 = new BinarySearchTree<>();
